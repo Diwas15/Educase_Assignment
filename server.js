@@ -69,6 +69,7 @@ app.post('/addSchool',(req,res)=>{
         if(err) throw err
         else{
             console.log("1 record added");
+            return res.status(201).send("Database updated Successfully. Record has been added");
         }
     })
 
