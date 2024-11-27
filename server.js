@@ -66,15 +66,17 @@ app.post('/addSchool',(req,res)=>{
     let addQuery = `INSERT INTO schools (name,address,latitude,longitude) VALUES ('${school.name}','${school.address}',${school.latitude},${school.longitude})`;
 
     db.query(addQuery, function(err, result){
-        if(err) throw err
+        if(err){
+            
+            res.status(401).send("CANNOT UPDATE DUE TO :",err);
+            throw err;
+        }
         else{
             console.log("1 record added");
             return res.status(201).send("Database updated Successfully. Record has been added");
         }
     })
-
-    console.log(school);
-    res.status(200).send();
+    
 });
 
 
