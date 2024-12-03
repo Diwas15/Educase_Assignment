@@ -6,12 +6,20 @@ const mysql = require('mysql2');
 const app = express();
 const PORT = process.env.PORT||8080;
 
+// const db = mysql.createConnection({
+//     host:'database-1.cr802ueeyh50.ap-south-1.rds.amazonaws.com',
+//     port:'3306',
+//     user:'satidiwas',
+//     password:'RekhaSati##123',
+//     database:'my_DB'
+// });
+
 const db = mysql.createConnection({
-    host:'database-1.cr802ueeyh50.ap-south-1.rds.amazonaws.com',
-    port:'3306',
-    user:'satidiwas',
-    password:'RekhaSati##123',
-    database:'my_DB'
+    host:'educase-satidiwas-9159.e.aivencloud.com',
+    port:'23210',
+    user:'avnadmin',
+    password:'AVNS_jw22vjBsbl4y0PYtXWB',
+    database:'defaultdb'
 });
 
 db.connect((err)=>{
