@@ -30,18 +30,20 @@ db.connect((err)=>{
         
         console.log("database connected successfully");
 
-        var checkTable = "SELECT EXISTS(SELECT * FROM information_schema.tables WHERE table_schema = 'my_DB' AND table_name = 'schools')";
+        var checkTable = "SELECT EXISTS(SELECT * FROM information_schema.tables WHERE table_schema = 'defaultdb' AND table_name = 'schools')";
         db.query(checkTable, function(err,result){
             if(err) throw err;
             let key = Object.keys(result[0])[0];
-            // console.log(result[0][key]);
+            console.log(result[0][key]);
+             console.log(result);
             
             if(result[0][key])  console.log("table is already there");
             else{
                 var sql = "CREATE TABLE schools (id INT AUTO_INCREMENT PRIMARY KEY , name VARCHAR(255), address VARCHAR(255), latitude FLOAT(17,14), longitude FLOAT(17,14))";
+
                 db.query(sql, function (err, result) {
-                    if (err) throw err;
-                    console.log("Table created");
+                    if (err) console.log("table already exists");
+                    else console.log("Table created");
                 });
             }
         });
